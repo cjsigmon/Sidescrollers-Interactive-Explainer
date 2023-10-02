@@ -1,0 +1,19 @@
+#canvas-scroll {
+
+    border: 3px solid;
+    background-color: rebeccapurple;
+}
+
+#slideshow {
+    width: 100vw;
+    height: 100vh;
+    border: 5px solid green;
+}
+
+
+.slide {
+    width: 80%;
+    height: 80%;
+    border: 2px solid;
+    background-color: red;
+}
