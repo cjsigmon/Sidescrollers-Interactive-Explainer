@@ -1,3 +1,56 @@
+#custom-cursor {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    background-size: cover;
+    background-image: url("img/tv.png");
+}
+
+#start-screen {
+    background-image: linear-gradient(to bottom, rgb(254, 233, 111), rgb(207, 176, 0));
+    position: absolute;
+    width: 98%;
+    height: 95%;
+    display: flex;
+    border-radius: 40px;
+}
+#start-btn {
+    background: none;
+    border: none;
+    cursor: none;
+    padding-top: 40px;
+    margin-bottom: 80px;
+}
+#START {
+    font-size: 7em;
+    color: #e83e8c;
+    text-shadow: -2px -3px rgba(255, 255, 255, 0.493), 2px 3px rgb(0, 187, 255);
+    font-family: "rixvideogame-pro", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: none;
+    animation: toggleOpacity 1s linear infinite;
+}
+
+
+@keyframes toggleOpacity {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    51% {
+        opacity: 0;
+    }
+    99% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 
 
 #canvas-scroll {
@@ -40,7 +93,7 @@
 .slide {
     display: none;
     border-radius: 80px;
-    width: 800px;
+    width: 760px;
     height: 600px;
     background-image: linear-gradient(to right, rgb(181, 172, 172), lightgray);
     box-shadow: 10px 10px 60px 100px rgba(0, 0, 0, 0.717), 0px 0px 2px 5px rgb(255, 249, 249);

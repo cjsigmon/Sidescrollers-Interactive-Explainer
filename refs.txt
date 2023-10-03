@@ -1,3 +1,9 @@
 old tv photo by https://www.pexels.com/@anete-lusina/
 film grain https://www.flickr.com/photos/9516941@N08/4323850291
 and https://www.pexels.com/photo/grain-texture-5506218/
+https://www.w3schools.com/js/js_object_sets.asp for js styles
+https://www.w3schools.com/graphics/canvas_images.asp for js canvas
+custom cursor: https://jsfiddle.net/2ZcSc/3/
+teling hover state in jquery: https://www.tutorialrepublic.com/faq/how-to-check-if-the-mouse-is-over-an-element-in-jquery.php
+jquery onclick
+custom cursor https://custom-cursor.com/en/collection/cursors/interference

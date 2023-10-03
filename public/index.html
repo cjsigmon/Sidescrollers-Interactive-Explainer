@@ -6,6 +6,18 @@
     <title>History of Sidescrollers</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="styles.css" rel="stylesheet">
+
+    <!-- vg font code -->
+    <script>
+        (function(d) {
+          var config = {
+            kitId: 'jgm1igx',
+            scriptTimeout: 3000,
+            async: true
+          },
+          h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+      </script>
 </head>
 <body>
 
@@ -36,6 +48,17 @@
         <div id="filter">
             <p> clip</p>
         </div>
+
+
+        <div id="start-screen" class="flex-column position-absolute justify-content-center align-items-center">
+            <p><code>A brief history of platformer games.</code></p>
+            <button id="start-btn"><h1 id="START">START</h1></button>
+            <h1><code id="explain-start">[Click or Enter to start]</code></h1>
+        </div>
+
+
+
+
         <div id="slideshow" class="d-flex justify-content-center align-items-center">
             <div class="slide visible">
                 <h1 class="text-white px-5 card-header"><code>SLIDE 1</code></h1>
@@ -71,6 +94,8 @@
     <img class="d-none" src="img/spritesheet.png" id="spritesheet"/>
     <img class="d-none" src="img/pixil-bg.png" id="pixBg"/>
 
+    <div id="custom-cursor"></div>
+
     
 
 
@@ -78,7 +103,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.2/paper-full.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="start.js"></script>
     <script src="slides.js"></script>
     <script src="scrolly.js"></script>
+    <script src="cursor.js"></script>
 </body>
 </html>

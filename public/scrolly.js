@@ -29,8 +29,8 @@ $(document).ready(function() {
         y: middleY,
         width: 64,
         height: 64,
-        fallSpeed: 4,
-        jumpSpeed: 50,
+        fallSpeed: 3,
+        jumpSpeed: 80,
         defaultSpeed: 8
     };
 
