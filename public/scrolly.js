@@ -78,7 +78,7 @@ function updateBGPosition() {
     if (keys['a'] || keys['A'] || keys['ArrowLeft']) {
         frameRow = 1; 
         if (bgScrollX > 0) {
-            bgScrollX-= 0.5;
+            bgScrollX-= 0.25;
         }
     }
     if (keys['d'] || keys['D'] || keys['ArrowRight']) {
