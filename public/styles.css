@@ -1,3 +1,7 @@
+body {
+    overflow-y: hidden;
+}
+
 #custom-cursor {
     width: 64px;
     height: 64px;
@@ -71,7 +75,7 @@
     height: 100%;
     background-image: url("img/grain.jpg");
     background-size:10%;
-    opacity: 0.05;
+    opacity: 0.06;
     background-repeat: repeat;
     animation: bgMove 1s linear infinite;
 
