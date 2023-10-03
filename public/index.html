@@ -15,16 +15,39 @@
     <input type="color">
     <input type="file" id="myFile"> -->
 
-    <div id="slideshow" class="d-flex align-items-center flex-column">
-        <template class="bg-black slide"><p>SLIDE 0</p></template>
-        <template class="bg-black slide">slide 1</template>
-        <template class="bg-black slide">slide 2</template>
-
+    <!-- <div id="slideshow" class="d-flex align-items-center flex-column">
         <div class="d-flex justify-content-center">
-            <canvas id="canvas-scroll" width="1200" height="120"></canvas>
+            <canvas id="canvas-scroll" width="1200" height="1200"></canvas>
         </div>
+        <div id="horizantal-anchor">
+            <div id="horizantal-slide-extend">
+                <div class="slide">
+                    <h1>slide 0</h1>
+                </div>
+            </div>
+            <a class="arr" id="prev" onclick="moveSlides(-1)">&#10094;</a>
+            <a class="arr" id="next" onclick="moveSlides(1)">&#10095;</a>
+        </div>
+    </div> -->
+
+
+    <div class="d-flex justify-content-center align-items-center cover-all">
+        <div id="filter">
+            <p> clip</p>
+        </div>
+        <canvas id="canvas-scroll" width="600" height="450"></canvas>
 
     </div>
+
+    <img class="d-none" id="tv" width="1288" height="1339" src="img/tv.png" alt="old tv outline"/>
+    <i class="sprite sprite-pixil-frame-0"></i>
+    <i class="sprite sprite-pixil-frame-0_1_"></i>
+    <i class="sprite sprite-pixil-frame-0_2_"></i>
+    <i class="sprite sprite-pixil-frame-0_3_"></i>
+    <img src="img/spritesheet.png" id="spritesheet"/>
+    
+
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.2/paper-full.js"></script>

@@ -1,19 +1,74 @@
+
+
 #canvas-scroll {
+    position: fixed;
+    border: 2px solid;
 
-    border: 3px solid;
-    background-color: rebeccapurple;
 }
+/*  */
 
-#slideshow {
+.cover-all {
+    background: linear-gradient(to right, purple, rgb(79, 110, 204));
+    position: relative;
     width: 100vw;
     height: 100vh;
-    border: 5px solid green;
+
+}
+
+#filter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("img/grain.jpg");
+    background-size:10%;
+    opacity: 0.05;
+    background-repeat: repeat;
+    animation: bgMove 1s linear infinite;
+
+}
+
+@keyframes bgMove {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
 }
 
 
-.slide {
-    width: 80%;
-    height: 80%;
-    border: 2px solid;
-    background-color: red;
+
+
+/* spitesheet styles */
+.sprite {
+    background-image: url('img/spritesheet.png');
+    background-repeat: no-repeat;
+    display: block;
 }
+
+.sprite-pixil-frame-0 {
+    width: 16px;
+    height: 16px;
+    background-position: 0 0;
+}
+
+.sprite-pixil-frame-0_1_ {
+    width: 16px;
+    height: 16px;
+    background-position: -16px 0;
+}
+
+.sprite-pixil-frame-0_2_ {
+    width: 16px;
+    height: 16px;
+    background-position: 0 -16px;
+}
+
+.sprite-pixil-frame-0_3_ {
+    width: 16px;
+    height: 16px;
+    background-position: -16px -16px;
+}
+
+
+
