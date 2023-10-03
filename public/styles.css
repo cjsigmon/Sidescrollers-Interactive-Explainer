@@ -58,6 +58,7 @@ body {
 
 
 #canvas-scroll {
+    width: 40%;
 }
 /*  */
 
@@ -92,13 +93,15 @@ body {
 
 
 #slideshow{
-    height: 100vh;
+    width: 60%;
+    height: 90%;
+    margin: 5%;
 }
 .slide {
     display: none;
+    height: 100%;
+    width: 100%;
     border-radius: 80px;
-    width: 760px;
-    height: 600px;
     background-image: linear-gradient(to right, rgb(181, 172, 172), lightgray);
     box-shadow: 10px 10px 60px 100px rgba(0, 0, 0, 0.717), 0px 0px 2px 5px rgb(255, 249, 249);
 }
