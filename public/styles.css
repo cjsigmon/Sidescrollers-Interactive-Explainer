@@ -2,13 +2,11 @@
 
 #canvas-scroll {
     position: fixed;
-    border: 2px solid;
-
 }
 /*  */
 
 .cover-all {
-    background: linear-gradient(to right, purple, rgb(79, 110, 204));
+    background: linear-gradient(to right, rgb(70, 0, 70), rgb(47, 66, 124));
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -46,29 +44,6 @@
     display: block;
 }
 
-.sprite-pixil-frame-0 {
-    width: 16px;
-    height: 16px;
-    background-position: 0 0;
-}
-
-.sprite-pixil-frame-0_1_ {
-    width: 16px;
-    height: 16px;
-    background-position: -16px 0;
-}
-
-.sprite-pixil-frame-0_2_ {
-    width: 16px;
-    height: 16px;
-    background-position: 0 -16px;
-}
-
-.sprite-pixil-frame-0_3_ {
-    width: 16px;
-    height: 16px;
-    background-position: -16px -16px;
-}
 
 
 
