@@ -19,18 +19,25 @@ $(document).ready(function() {
     let timeFrame = 0;
     let currentFrame = 0; // The current frame to display (on row)
     let frameRow = 0;
+    let bgScrollX = 0;
+    let breakPoints = new Set();
     const keys = {};
     paper.install(window);
 
     const player = {
         x: middleX,
-        y: Y0,
-        width: 54,
-        height: 54,
+        y: middleY,
+        width: 64,
+        height: 64,
         fallSpeed: 4,
-        jumpSpeed: 60,
+        jumpSpeed: 50,
         defaultSpeed: 8
     };
+
+    const bgWidthSegment = pixBg.width/8;
+    for (let i = 0; i < 7; i++) {
+        breakPoints.add(bgWidthSegment*(i+1));
+    }
 
     function updatePlayerFrame() {
         if (timeFrame <= 10) {
@@ -60,7 +67,7 @@ document.addEventListener('keyup', (event) => {
 
 
 function updatePlayerPosition() {
-    if (player.y < HEIGHT) {
+    if (player.y < HEIGHT - player.height/3) {
         player.y+= player.fallSpeed;
     }
 }
@@ -70,9 +77,21 @@ function updatePlayerPosition() {
 function updateBGPosition() {
     if (keys['a'] || keys['A'] || keys['ArrowLeft']) {
         frameRow = 1; 
+        if (bgScrollX > 0) {
+            bgScrollX-= 0.5;
+        }
     }
     if (keys['d'] || keys['D'] || keys['ArrowRight']) {
         frameRow = 1;
+        if (bgScrollX < pixBg.width-40) {
+            bgScrollX+= 0.25;
+        }
+    }
+
+    if (breakPoints.has(bgScrollX)) {
+        let index = bgScrollX/bgWidthSegment;
+        slideBreak(index);
+        // go tell slides to update content
     }
 } // end function updatePlayerPosition()
 
@@ -83,7 +102,7 @@ function updateBGPosition() {
 
         ctx.drawImage(
             pixBg,
-            0,
+            bgScrollX,
             0,
             40,
             32,

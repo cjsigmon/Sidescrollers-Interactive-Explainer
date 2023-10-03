@@ -1,7 +1,6 @@
 
 
 #canvas-scroll {
-    position: fixed;
 }
 /*  */
 
@@ -32,6 +31,22 @@
     100% {
         background-position: 0% 100%;
     }
+}
+
+
+#slideshow{
+    height: 100vh;
+}
+.slide {
+    display: none;
+    border-radius: 80px;
+    width: 800px;
+    height: 600px;
+    background-image: linear-gradient(to right, rgb(181, 172, 172), lightgray);
+    box-shadow: 10px 10px 60px 100px rgba(0, 0, 0, 0.717), 0px 0px 2px 5px rgb(255, 249, 249);
+}
+.visible {
+    display: block;
 }
 
 
