@@ -66,8 +66,17 @@ body {
 
 
 #canvas-scroll {
-    height: 20%;
-    border: 2px solid;
+    --mask: linear-gradient(to top, 
+    rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 65%, 
+    rgba(0,0,0, 0) 95%, rgba(0,0,0, 0) 0
+) 100% 50% / 100% 100% repeat-x;
+-webkit-mask: var(--mask); 
+mask: var(--mask);
+    /* border: 2px solid; */
+    display: none;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+
 }
 /*  */
 

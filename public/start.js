@@ -9,6 +9,7 @@ $(document).ready(function() {
         if (event.key === 'Enter') {
             $('#start-screen').hide();
             $('.swiper').show();
+            $('#canvas-scroll').show();
         }
       });
 
@@ -16,6 +17,7 @@ $(document).ready(function() {
       $( "#start-btn" ).on( "click", function() {
         $('#start-screen').hide();
         $('.swiper').show();
+        $('#canvas-scroll').show();
       } );
 
 

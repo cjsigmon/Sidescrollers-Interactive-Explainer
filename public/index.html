@@ -44,7 +44,7 @@
 
     .swiper {
       width: 80%;
-      height: 100%;
+      height: 80%;
       display: none;
     }
 
@@ -73,7 +73,7 @@
       
 
 
-    <div class="d-flex flex-column justify-content-center align-items-center cover-all">
+    <div class="d-flex flex-column justify-content-between align-items-center cover-all">
         <div id="filter">
             <p> clip</p>
         </div>
@@ -111,7 +111,7 @@
         </div> -->
 
           <!-- Slider main container -->
-          <div class="swiper mySwiper">
+          <div class="swiper mySwiper my-4">
             <div class="swiper-wrapper">
               <div class="swiper-slide">Slide 1</div>
               <div class="swiper-slide">Slide 2</div>
@@ -129,16 +129,11 @@
           </div>
 
         
-        <canvas id="canvas-scroll" class="mx-5" width="1600" height="600"></canvas>
+        <canvas id="canvas-scroll" class="mx-5" width="1200" height="120"></canvas>
 
     </div>
-
-
-
-    <img class="d-none" id="tv" src="img/tv.png" alt="old tv outline"/>
-
     <img class="d-none" src="img/spritesheet.png" id="spritesheet"/>
-    <img class="d-none" src="img/pixil-bg.png" id="pixBg"/>
+    <img class="d-none" src="img/clouds.png" id="pixBg"/>
 
     <div class="" id="custom-cursor"></div>
 
@@ -146,10 +141,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.2/paper-full.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    
-
-
-
     <script src="start.js"></script>
     <script src="slides.js"></script>
     <script src="scrolly.js"></script>
