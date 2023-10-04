@@ -18,14 +18,46 @@ $(document).ready(function() {
     let timeFrame = 0;
     let currentFrame = 0; // The current frame to display (on row)
     let frameRow = 0;
-    let bgScrollX = 0;
+    var bgScrollX = 0;
     let breakPoints = new Set();
     const keys = {};
     paper.install(window);
 
+
+    function skipBgAhead(iterations) {
+        let count = 0;
+      
+        const intervalId = setInterval(function() {
+          // Your code to run at the specified interval goes here
+      
+          bgScrollX += bgWidthSegment/8
+          count+=1;
+      
+          if (count >= iterations) {
+            clearInterval(intervalId); // Stop the interval when the desired number of iterations is reached
+            console.log('Function completed');
+          }
+        }, 1);
+      }
+
+    var nextButton = document.getElementById('mynext');
+    var prevButton = document.getElementById('myback');
+    // Add event listeners to the buttons
+    nextButton.addEventListener('click', function () {
+        console.log('Next button clicked');
+        if (bgScrollX < pixBg.width-bgWidthSegment) {
+            bgScrollX+= 4
+            skipBgAhead(8);
+        }
+    });
+    
+    prevButton.addEventListener('click', function () {
+        console.log('Prev button clicked');
+    });
+
     const player = {
         x: middleX,
-        y: middleY,
+        y: middleY - 64,
         width: 64,
         height: 64,
         fallSpeed: 2,
@@ -33,8 +65,8 @@ $(document).ready(function() {
         defaultSpeed: 8
     };
 
-    const bgWidthSegment = pixBg.width/8;
-    for (let i = 0; i < 7; i++) {
+    const bgWidthSegment = pixBg.width/10;
+    for (let i = 0; i < 8; i++) {
         breakPoints.add(bgWidthSegment*(i+1));
     }
 
@@ -76,19 +108,21 @@ function updateBGPosition() {
     if (keys['a'] || keys['A'] || keys['ArrowLeft']) {
         frameRow = 1; 
         if (bgScrollX > 0) {
-            bgScrollX-= 2;
+            bgScrollX-= 6;
         }
     }
     if (keys['d'] || keys['D'] || keys['ArrowRight']) {
         frameRow = 1;
-        if (bgScrollX < pixBg.width-40) {
-            bgScrollX+= 2;
+        if (bgScrollX < pixBg.width-canvas.width) {
+            bgScrollX+= 6;
         }
     }
 
     if (breakPoints.has(bgScrollX)) {
         let index = bgScrollX/bgWidthSegment;
-        // slideBreak(index);
+
+        evalSlideIndex(index);
+        // this is a function in slides.js
         // go tell slides to update content
     }
 } // end function updatePlayerPosition()
