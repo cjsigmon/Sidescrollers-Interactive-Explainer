@@ -7,3 +7,13 @@ custom cursor: https://jsfiddle.net/2ZcSc/3/
 teling hover state in jquery: https://www.tutorialrepublic.com/faq/how-to-check-if-the-mouse-is-over-an-element-in-jquery.php
 jquery onclick
 custom cursor https://custom-cursor.com/en/collection/cursors/interference
+
+what is a sidescroller = https://www.techopedia.com/definition/27153/side-scroller
+https://en.wikipedia.org/wiki/Jump_Bug
+https://www.ign.com/articles/2008/03/24/the-leif-ericson-awards?page=2
+https://www.hp.com/gb-en/shop/tech-takes/top-50-best-selling-video-games-all-time
+https://www.gamedeveloper.com/design/scroll-back-the-theory-and-practice-of-cameras-in-side-scrollers
+https://devskiller.com/blog/history-of-programming-languages/
+https://www.gamedeveloper.com/design/the-long-shadow-of-i-super-mario-bros-i-
+https://codeburst.io/an-introduction-to-6502-assembly-and-low-level-programming-7c11fa6b9cb9
+https://www.cartoonbrew.com/videogames/cuphead-sold-500k-copies-first-two-weeks-means-animation-creators-153998.html
