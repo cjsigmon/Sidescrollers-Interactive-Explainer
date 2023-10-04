@@ -1,20 +1,16 @@
-console.log("slides js loaded");
-const slideNum = 7;
-const slideShow = document.getElementById("slideShow");
-const slides = document.getElementsByClassName("slide");
+var swiper = new Swiper(".mySwiper", {
+    pagination: {
+      el: ".swiper-pagination",
+      type: "progressbar",
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  }); 
+  
 
+//   const swiper = document.querySelector('.swiper').swiper;
 
-function slideBreak(x) {
-    console.log("we called slide break at " + x);
-    if (slides[x].classList.contains("visible")) {
-        // then we are going backwards
-        slides[x].classList.remove("visible");
-        slides[x-1].classList.add("visible");
-
-
-    } else if (slides[x-1].classList.contains("visible")) {
-        // we are going forwards
-        slides[x-1].classList.remove("visible");
-        slides[x].classList.add("visible");
-    }
-}
+// // Now you can use all slider methods like
+// swiper.slideNext();

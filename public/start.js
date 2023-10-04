@@ -7,14 +7,15 @@ $(document).ready(function() {
 
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
-            console.log("Yoy pressed enter")
             $('#start-screen').hide();
+            $('.swiper').show();
         }
       });
 
 
       $( "#start-btn" ).on( "click", function() {
         $('#start-screen').hide();
+        $('.swiper').show();
       } );
 
 

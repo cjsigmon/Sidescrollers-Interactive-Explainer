@@ -3,9 +3,13 @@ $(document).ready(function() {
         cursor: 'none'
     });
 
+    $('.my-swiper-button-next').mouseenter(function () {
+        console.log('Mouse entered .swiper-button-next');
+    });
+
 
     $(document).on('mousemove', function(e){
-        if($('#start-btn:hover').length != 0) {
+        if($('#start-btn:hover').length != 0 || $('.cursor-none:hover').length != 0) {
             $('#custom-cursor').css({
                 left:  e.pageX,
                 top:   e.pageY,
@@ -23,6 +27,6 @@ $(document).ready(function() {
     
     });
 
-})
+});
 
 

@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History of Sidescrollers</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
     <link href="styles.css" rel="stylesheet">
 
     <!-- vg font code -->
@@ -18,33 +25,55 @@
           h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
         })(document);
       </script>
+
+<style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 80%;
+      height: 100%;
+      display: none;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- <label for="progbar">Reading progress:</label>
-    <progress id="progbar" value="32" max="100"> 32% </progress>
 
-    <input type="color">
-    <input type="file" id="myFile"> -->
-
-    <!-- <div id="slideshow" class="d-flex align-items-center flex-column">
-        <div class="d-flex justify-content-center">
-            <canvas id="canvas-scroll" width="1200" height="1200"></canvas>
-        </div>
-        <div id="horizantal-anchor">
-            <div id="horizantal-slide-extend">
-                <div class="slide">
-                    <h1>slide 0</h1>
-                </div>
-            </div>
-            <a class="arr" id="prev" onclick="moveSlides(-1)">&#10094;</a>
-            <a class="arr" id="next" onclick="moveSlides(1)">&#10095;</a>
-        </div>
-    </div> -->
+      
 
 
-
-    <div class="d-flex justify-content-center align-items-center cover-all">
+    <div class="d-flex flex-column justify-content-center align-items-center cover-all">
         <div id="filter">
             <p> clip</p>
         </div>
@@ -55,7 +84,7 @@
             <h1><code id="explain-start">[Click or Enter to start]</code></h1>
         </div>
 
-
+<!-- 
         <div id="slideshow" class="d-flex justify-content-center align-items-center">
             <div class="slide visible">
                 <h1 class="text-white px-5 card-header"><code>SLIDE 1</code></h1>
@@ -79,8 +108,28 @@
             <div class="slide">
                 <h1 class="text-white px-5 card-header"><code>SLIDE 7</code></h1>
             </div>
-        </div>
-        <canvas id="canvas-scroll" class="mx-5" width="600" height="600"></canvas>
+        </div> -->
+
+          <!-- Slider main container -->
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">Slide 1</div>
+              <div class="swiper-slide">Slide 2</div>
+              <div class="swiper-slide">Slide 3</div>
+              <div class="swiper-slide">Slide 4</div>
+              <div class="swiper-slide">Slide 5</div>
+              <div class="swiper-slide">Slide 6</div>
+              <div class="swiper-slide">Slide 7</div>
+              <div class="swiper-slide">Slide 8</div>
+              <div class="swiper-slide">Slide 9</div>
+            </div>
+            <div class="swiper-button-next cursor-none"></div>
+            <div class="swiper-button-prev cursor-none"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+
+        
+        <canvas id="canvas-scroll" class="mx-5" width="1600" height="600"></canvas>
 
     </div>
 
@@ -95,11 +144,12 @@
 
     
 
-
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.2/paper-full.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    
+
+
+
     <script src="start.js"></script>
     <script src="slides.js"></script>
     <script src="scrolly.js"></script>

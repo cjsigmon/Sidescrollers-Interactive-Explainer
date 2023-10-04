@@ -8,7 +8,15 @@ body {
     position: absolute;
     background-size: cover;
     background-image: url("img/tv.png");
+    z-index: 9999;
+    transform: translate(-30px, -15px);
 }
+
+.cursor-none:hover {
+    cursor: none !important;
+}
+
+
 
 #start-screen {
     background-image: linear-gradient(to bottom, rgb(254, 233, 111), rgb(207, 176, 0));
@@ -58,7 +66,8 @@ body {
 
 
 #canvas-scroll {
-    width: 40%;
+    height: 20%;
+    border: 2px solid;
 }
 /*  */
 

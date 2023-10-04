@@ -2,12 +2,12 @@ $(document).ready(function() {
     'use strict';
     const canvas = document.getElementById("canvas-scroll");
     const ctx = canvas.getContext("2d");
-    const X0 = 0 + canvas.width/8;
-    const Y0 = canvas.height/9;
-    const WIDTH = canvas.width - 2*X0;
-    const HEIGHT = canvas.height- 4*Y0;
-    const middleX = (WIDTH-X0)/2 + X0;
-    const middleY = (HEIGHT-Y0)/2 + Y0;
+    const X0 = 0;
+    const Y0 = 0;
+    const WIDTH = canvas.width;
+    const HEIGHT = canvas.height;
+    const middleX = (WIDTH-X0)/2;
+    const middleY = (HEIGHT-Y0)/2;
     const spriteSheet = document.getElementById("spritesheet");
     const pixBg = document.getElementById("pixBg");
     const tv = document.getElementById("tv");
@@ -100,6 +100,8 @@ function updateBGPosition() {
         updateBGPosition();
         updatePlayerPosition();
 
+        
+
         ctx.drawImage(
             pixBg,
             bgScrollX,
@@ -113,24 +115,19 @@ function updateBGPosition() {
         );
 
         
-        ctx.drawImage(
-            tv,
-            0,
-            0,
-            1288,
-            1339,
-            0,
-            0,
-            canvas.width,
-            canvas.height   
-        );
+        // ctx.drawImage(
+        //     tv,
+        //     0,
+        //     0,
+        //     1288,
+        //     1339,
+        //     0,
+        //     0,
+        //     canvas.width,
+        //     canvas.height   
+        // );
 
-        
-
-
-
-
-
+    
 
         ctx.drawImage(
             spriteSheet,
