@@ -7,7 +7,7 @@ body {
     height: 64px;
     position: absolute;
     background-size: cover;
-    background-image: url("img/tv.png");
+    background-image: none;
     z-index: 9999;
     transform: translate(-30px, -15px);
 }
