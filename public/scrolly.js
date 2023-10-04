@@ -10,6 +10,8 @@ $(document).ready(function() {
     const spriteSheet = document.getElementById("spritesheet");
     const pixBg = document.getElementById("pixBg");
     // const tv = document.getElementById("tv");
+    const rectY = canvas.height - 30; // Y-coordinate of the top-left corner
+
 
     const frameWidth = 64; // Width of a single frame in pixels
     const frameHeight = 64; // Height of a single frame in pixels
@@ -24,14 +26,12 @@ $(document).ready(function() {
     paper.install(window);
 
 
-    function skipBgAhead(iterations) {
+    function skipBgAhead(iterations, dir) {
         let count = 0;
       
-        const intervalId = setInterval(function() {
-          // Your code to run at the specified interval goes here
-      
-          bgScrollX += bgWidthSegment/8
-          count+=1;
+        const intervalId = setInterval(function() {      
+          bgScrollX += dir * bgWidthSegment/iterations;
+          count++;
       
           if (count >= iterations) {
             clearInterval(intervalId); // Stop the interval when the desired number of iterations is reached
@@ -44,15 +44,17 @@ $(document).ready(function() {
     var prevButton = document.getElementById('myback');
     // Add event listeners to the buttons
     nextButton.addEventListener('click', function () {
-        console.log('Next button clicked');
         if (bgScrollX < pixBg.width-bgWidthSegment) {
             bgScrollX+= 4
-            skipBgAhead(8);
+            skipBgAhead(8, 1);
         }
     });
     
     prevButton.addEventListener('click', function () {
-        console.log('Prev button clicked');
+        if (bgScrollX > bgWidthSegment) {
+            bgScrollX+= 1;
+            skipBgAhead(8, -1);
+        }
     });
 
     const player = {
@@ -68,6 +70,8 @@ $(document).ready(function() {
     const bgWidthSegment = pixBg.width/10;
     for (let i = 0; i < 8; i++) {
         breakPoints.add(bgWidthSegment*(i+1));
+        breakPoints.add(bgWidthSegment*(i+1)+1);
+        breakPoints.add(bgWidthSegment*(i+1)-1);
     }
 
     function updatePlayerFrame() {
@@ -97,7 +101,11 @@ document.addEventListener('keyup', (event) => {
 
 
 function updatePlayerPosition() {
-    if (player.y < HEIGHT - player.height) {
+    if (bgScrollX > bgWidthSegment) {
+        if (player.y < rectY - player.height - 2) {
+            player.y+= player.fallSpeed;
+        }
+    } else if (player.y < HEIGHT - player.height) {
         player.y+= player.fallSpeed;
     }
 }
@@ -114,7 +122,15 @@ function updateBGPosition() {
     if (keys['d'] || keys['D'] || keys['ArrowRight']) {
         frameRow = 1;
         if (bgScrollX < pixBg.width-canvas.width) {
-            bgScrollX+= 6;
+            if (bgScrollX > bgWidthSegment) {
+                if (player.y < rectY - player.height) {
+                    bgScrollX+= 6;
+                }
+            } 
+            
+            else {
+                bgScrollX+= 6;
+            }
         }
     }
 
@@ -148,17 +164,13 @@ function updateBGPosition() {
         );
 
         
-        // ctx.drawImage(
-        //     tv,
-        //     0,
-        //     0,
-        //     1288,
-        //     1339,
-        //     0,
-        //     0,
-        //     canvas.width,
-        //     canvas.height   
-        // );
+        var rectX = bgWidthSegment - bgScrollX + middleX; // X-coordinate of the top-left corner
+        var rectWidth = canvas.width-rectX; // Width of the rectangle
+        var rectHeight = 30; // Height of the rectangle
+    
+        // Set the fill color and draw the rectangle on top of the image
+        ctx.fillStyle = "rgba(255, 0, 0, 0.5)"; // Red with 50% opacity
+        ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
 
     
 
