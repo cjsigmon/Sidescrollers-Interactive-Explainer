@@ -71,7 +71,24 @@ $(document).ready(function() {
     for (let i = 0; i < 8; i++) {
         breakPoints.add(bgWidthSegment*(i+1));
         breakPoints.add(bgWidthSegment*(i+1)+1);
+        breakPoints.add(bgWidthSegment*(i+1)+2);
+        breakPoints.add(bgWidthSegment*(i+1)+3);
+        breakPoints.add(bgWidthSegment*(i+1)+4);
         breakPoints.add(bgWidthSegment*(i+1)-1);
+        breakPoints.add(bgWidthSegment*(i+1)-2);
+        breakPoints.add(bgWidthSegment*(i+1)-3);
+        breakPoints.add(bgWidthSegment*(i+1)-4);
+        breakPoints.add(bgWidthSegment*(i+1)-5);
+
+        breakPoints.add(bgWidthSegment*(i+1)-6);
+        breakPoints.add(bgWidthSegment*(i+1)-7);
+        breakPoints.add(bgWidthSegment*(i+1)-8);
+
+
+
+
+
+
     }
 
     function updatePlayerFrame() {
