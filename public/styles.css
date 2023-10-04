@@ -19,10 +19,10 @@ body {
 
 
 #start-screen {
-    background-image: linear-gradient(to bottom, rgb(254, 233, 111), rgb(207, 176, 0));
+    background-image: linear-gradient(to bottom, rgb(50, 43, 0), rgb(0, 0, 0));
     position: absolute;
     width: 98%;
-    height: 95%;
+    height: 98%;
     display: flex;
     border-radius: 40px;
 }
@@ -36,7 +36,7 @@ body {
 #START {
     font-size: 7em;
     color: #e83e8c;
-    text-shadow: -2px -3px rgba(255, 255, 255, 0.493), 2px 3px rgb(0, 187, 255);
+    text-shadow: -2px -3px rgba(255, 255, 255, 0.649), 2px 3px rgb(0, 187, 255);
     font-family: "rixvideogame-pro", sans-serif;
     font-weight: 400;
     font-style: normal;
