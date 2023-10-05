@@ -10,4 +10,12 @@
 
 6) Super Mario Bros was stored entirely on 40kb of memory. That's the equivalent to a 115-pixel square Adobe Photoshop doc. So how were these games able to display so many scenes and levels? The simple answer is a spritesheet. Every graphic in the game was stored in an 8kb spritesheet. Backgrounds would just be a couple small images repeated many times and while other sprites could be layered on top, there could be no more than 64 on screen at once. This approach also makes it easy to fix designs without having to change any logic. Press the button to toggle night mode.
 
+7) Fast forward to the 90s with the release of Sonic the Hedgehog, a game that brought display speeds up to 60 frames per second. This enabled much quicker gameplay and enhanced the excitement of the genre. Use the slider below to adjust player speed.
+
+8) While they may not be the mainstay they once were, sidescrolling platformers are far from obsolete. For instance, Cuphead garnered an estimated 575,000 sold copies on Steam--just in its first two weeks on the market. Cuphead is also proof that painstaking development is also still alive and well: every frame of animation in the game was hand drawn on paper.
+
+9) Want to test your retention? OPEN QUIZ
+
+
+
 

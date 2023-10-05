@@ -126,6 +126,17 @@ mask: var(--mask);
 .visible {
     display: block;
 }
+.slide-content {
+    width: 80%;
+}
+
+.inline-img {
+    height: 100px;
+    width: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    float: left;
+}
 
 
 
