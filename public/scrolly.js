@@ -9,21 +9,26 @@ $(document).ready(function() {
     const middleY = canvas.height/2;
     const spriteSheet = document.getElementById("spritesheet");
     const pixBg = document.getElementById("pixBg");
-    // const tv = document.getElementById("tv");
+    const bgWidthSegment = pixBg.width/10;
+    var rectX = bgWidthSegment - bgScrollX + middleX;
     const rectY = canvas.height - 30; // Y-coordinate of the top-left corner
-
-
-    const frameWidth = 64; // Width of a single frame in pixels
-    const frameHeight = 64; // Height of a single frame in pixels
-    const frameCount = 2; // Number of frames in the spritesheet
-        // sprite sheet animation
+    const frameWidth = 64; // Width of a single player frame
+    const frameHeight = 64; // Height of player frame
+    const frameCount = 2; // Number of frames in the player spritesheet
+    // sprite sheet animation variables
     let timeFrame = 0;
     let currentFrame = 0; // The current frame to display (on row)
     let frameRow = 0;
     var bgScrollX = 0;
     let breakPoints = new Set();
+    // keys for user input
     const keys = {};
+    var nextButton = document.getElementById('mynext');
+    var prevButton = document.getElementById('myback');
     paper.install(window);
+    // SLIDE 2 VARIABLES
+    var playerXRange = document.getElementById("playerXRange");
+    var playerXOutput = document.getElementById("playerXOutput");
 
 
     function skipBgAhead(iterations, dir) {
@@ -40,8 +45,6 @@ $(document).ready(function() {
         }, 1);
       }
 
-    var nextButton = document.getElementById('mynext');
-    var prevButton = document.getElementById('myback');
     // Add event listeners to the buttons
     nextButton.addEventListener('click', function () {
         if (bgScrollX < pixBg.width-bgWidthSegment) {
@@ -67,7 +70,7 @@ $(document).ready(function() {
         defaultSpeed: 8
     };
 
-    const bgWidthSegment = pixBg.width/10;
+
     for (let i = 0; i < 8; i++) {
         breakPoints.add(bgWidthSegment*(i+1));
         breakPoints.add(bgWidthSegment*(i+1)+1);
@@ -91,6 +94,7 @@ $(document).ready(function() {
 
     }
 
+    // this controls the animation for player from their spritesheet
     function updatePlayerFrame() {
         if (timeFrame <= 10) {
             timeFrame++;
@@ -100,7 +104,7 @@ $(document).ready(function() {
         }
     }
 
-    // let the functions begin
+// user input for keys
 document.addEventListener('keydown', (event) => {
     keys[event.key] = true;
     if (keys['w'] || keys['W'] || keys['ArrowUp'] || keys[' ']) {
@@ -117,16 +121,37 @@ document.addEventListener('keyup', (event) => {
 });
 
 
-function updatePlayerPosition() {
-    if (bgScrollX > bgWidthSegment) {
-        if (player.y < rectY - player.height - 2) {
-            player.y+= player.fallSpeed;
-        }
-    } else if (player.y < HEIGHT - player.height) {
-        player.y+= player.fallSpeed;
-    }
+
+function playerIsAfterRect() {
+    return player.x > rectX;
+}
+function playerIsAboveRect() {
+    return player.y <= rectY - player.height;
+}
+function playerIsOnRect() {
+    return (player.y <= rectY - player.height + player.fallSpeed && player.y >= rectY - player.height - player.fallSpeed);
+}
+
+function playerIsAboveGround() {
+    return player.y <= HEIGHT - player.height;
 }
   
+// updates player's position RELATIVE TO THE CANVAS
+function updatePlayerPosition() {
+    // handle how far the player falls
+    if (playerIsAfterRect()) {
+        if (playerIsAboveRect()) {
+            player.y+= player.fallSpeed;
+        }
+    } else if (playerIsAboveGround()) {
+        player.y+= player.fallSpeed;
+    }
+    // end player y positioning, start player x-positioning
+    player.x = playerXRange.value * (middleX/5);
+    playerXOutput.innerHTML = playerXRange.value;
+
+
+}
 
 // x - moving
 function updateBGPosition() {
@@ -139,12 +164,11 @@ function updateBGPosition() {
     if (keys['d'] || keys['D'] || keys['ArrowRight']) {
         frameRow = 1;
         if (bgScrollX < pixBg.width-canvas.width) {
-            if (bgScrollX > bgWidthSegment) {
-                if (player.y < rectY - player.height) {
+            if (playerIsAfterRect()) {
+                if (playerIsAboveRect() || playerIsOnRect()) {
                     bgScrollX+= 6;
                 }
             } 
-            
             else {
                 bgScrollX+= 6;
             }
@@ -153,7 +177,6 @@ function updateBGPosition() {
 
     if (breakPoints.has(bgScrollX)) {
         let index = bgScrollX/bgWidthSegment;
-
         evalSlideIndex(index);
         // this is a function in slides.js
         // go tell slides to update content
@@ -167,7 +190,7 @@ function updateBGPosition() {
         updatePlayerPosition();
 
         
-
+        // draw the background
         ctx.drawImage(
             pixBg,
             bgScrollX,
@@ -180,17 +203,15 @@ function updateBGPosition() {
             canvas.height
         );
 
-        
-        var rectX = bgWidthSegment - bgScrollX + middleX; // X-coordinate of the top-left corner
-        var rectWidth = canvas.width-rectX; // Width of the rectangle
-        var rectHeight = 30; // Height of the rectangle
-    
-        // Set the fill color and draw the rectangle on top of the image
+        // draw a rectangle on the canvas
+        rectX = bgWidthSegment - bgScrollX + middleX;
+        var rectWidth = canvas.width-rectX; 
+        var rectHeight = 30; 
         ctx.fillStyle = "rgba(255, 0, 0, 0.5)"; // Red with 50% opacity
         ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
 
-    
 
+        //  draw the player
         ctx.drawImage(
             spriteSheet,
             currentFrame * frameWidth + 2,
