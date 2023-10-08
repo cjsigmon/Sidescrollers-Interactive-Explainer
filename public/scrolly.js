@@ -47,6 +47,11 @@ $(document).ready(function() {
     var windowRectHeight = canvas.height;
     var playerWindow = false;
     var windowOffsetX = 0;
+    // SLIDE 4 VARIABLES
+    var platformX;
+    const platformY = middleY + 3/4*rectHeight;
+    const platformWidth = bgWidthSegment/10;
+    const platformHeight = rectHeight/4;
 
 
     function skipBgAhead(iterations, dir) {
@@ -140,15 +145,19 @@ document.addEventListener('keyup', (event) => {
 
 
 
-function playerIsAfterRect() {
-    return player.x > rectX && player.x < rectX+rectWidth;
+function playerIsInRectRange() {
+    return player.x > rectX && player.x < rectX+rectWidth 
+    || (player.x > platformX && player.x < platformX+platformWidth);
 }
 function playerIsAboveRect() {
-    return (player.y <= rectY - player.height && player.x > rectX && player.x < rectX+rectWidth);
+    return (player.y <= rectY - player.height && player.x > rectX && player.x < rectX+rectWidth
+        || (player.y <= platformY - player.height && player.x > platformX && player.x < platformX+platformWidth));
 }
 function playerIsOnRect() {
     return (player.y <= rectY - player.height + player.fallSpeed && player.y >= rectY - player.height - player.fallSpeed
-        && player.x > rectX && player.x < rectX+rectWidth);
+        && player.x > rectX && player.x < rectX+rectWidth 
+        || (player.x > platformX && player.x < platformX+platformWidth 
+        && player.y > platformY+player.fallSpeed && player.y < platformY-player.fallSpeed));
 }
 
 function playerIsAboveGround() {
@@ -182,7 +191,7 @@ function updatePlayerPosition() {
     // handle how far the player falls
     rectStyle = redStyle;
     playerWindow = false;
-    if (playerIsAfterRect()) {
+    if (playerIsInRectRange()) {
         if (playerIsAboveRect()) {
             player.y+= player.fallSpeed;
         }
@@ -288,10 +297,14 @@ function updateBGPosition() {
             canvas.height
         );
 
-        // draw a rectangle on the canvas
+        // draw a rectangle for slide 2,3
         rectX = bgWidthSegment - bgScrollX + middleX;
         ctx.fillStyle = rectStyle;
         ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
+
+        // draw a platform for slide 4
+        platformX = 3*bgWidthSegment - bgScrollX + 2*middleX;
+        ctx.fillRect(platformX, platformY, platformWidth, platformHeight);
 
 
         //  draw the player
