@@ -52,6 +52,16 @@ $(document).ready(function() {
     const platformY = middleY + 3/4*rectHeight;
     const platformWidth = bgWidthSegment/10;
     const platformHeight = rectHeight/4;
+    const player = {
+        x: middleX,
+        y: middleY - 64,
+        width: 64,
+        height: 64,
+        fallSpeed: 2,
+        jumpSpeed: 64,
+        walkSpeed: 6,
+        defaultSpeed: 8
+    };
 
 
     function skipBgAhead(iterations, dir) {
@@ -66,7 +76,6 @@ $(document).ready(function() {
           }
         }, 1);
       }
-
     // Add event listeners to the buttons
     nextButton.addEventListener('click', function () {
         if (bgScrollX < pixBg.width-bgWidthSegment) {
@@ -74,26 +83,12 @@ $(document).ready(function() {
             skipBgAhead(8, 1);
         }
     });
-    
     prevButton.addEventListener('click', function () {
         if (bgScrollX > bgWidthSegment) {
             bgScrollX+= 1;
             skipBgAhead(8, -1);
         }
     });
-
-    const player = {
-        x: middleX,
-        y: middleY - 64,
-        width: 64,
-        height: 64,
-        fallSpeed: 2,
-        jumpSpeed: 64,
-        walkSpeed: 6,
-        defaultSpeed: 8
-    };
-
-
     for (let i = 0; i < 8; i++) {
         breakPoints.add(bgWidthSegment*(i+1));
         breakPoints.add(bgWidthSegment*(i+1)+1);
@@ -105,7 +100,6 @@ $(document).ready(function() {
         breakPoints.add(bgWidthSegment*(i+1)-3);
         breakPoints.add(bgWidthSegment*(i+1)-4);
         breakPoints.add(bgWidthSegment*(i+1)-5);
-
         breakPoints.add(bgWidthSegment*(i+1)-6);
         breakPoints.add(bgWidthSegment*(i+1)-7);
         breakPoints.add(bgWidthSegment*(i+1)-8);
@@ -146,18 +140,19 @@ document.addEventListener('keyup', (event) => {
 
 
 function playerIsInRectRange() {
-    return player.x > rectX && player.x < rectX+rectWidth 
-    || (player.x > platformX && player.x < platformX+platformWidth);
+    return player.x > rectX-player.width/2 && player.x < rectX+rectWidth 
+    || (player.x > platformX-player.width/2 && player.x < platformX+platformWidth);
 }
 function playerIsAboveRect() {
-    return (player.y <= rectY - player.height && player.x > rectX && player.x < rectX+rectWidth
-        || (player.y <= platformY - player.height && player.x > platformX && player.x < platformX+platformWidth));
+    return (player.y <= rectY - player.height && player.x > rectX-player.width/2 && player.x < rectX+rectWidth
+        || (player.y <= platformY - player.height && player.x > platformX-player.width/2 && player.x < platformX+platformWidth));
 }
 function playerIsOnRect() {
     return (player.y <= rectY - player.height + player.fallSpeed && player.y >= rectY - player.height - player.fallSpeed
-        && player.x > rectX && player.x < rectX+rectWidth 
-        || (player.x > platformX && player.x < platformX+platformWidth 
-        && player.y > platformY+player.fallSpeed && player.y < platformY-player.fallSpeed));
+        && player.x > rectX-player.width && player.x < rectX+rectWidth 
+        || (player.x > platformX-player.width && player.x < platformX+platformWidth 
+        && player.y < platformY-player.height+player.fallSpeed 
+        && player.y > platformY-player.height-player.fallSpeed));
 }
 
 function playerIsAboveGround() {
@@ -195,6 +190,9 @@ function updatePlayerPosition() {
         if (playerIsAboveRect()) {
             player.y+= player.fallSpeed;
         }
+    } else if (playerIsAboveGround()) {
+        player.y+= player.fallSpeed;
+    }
 
         switch(whichSlideIsPlayerOn()) {
             case 1:
@@ -207,7 +205,11 @@ function updatePlayerPosition() {
 
                 break;
             case 4:
-                rectStyle = blueStyle;
+                if (playerIsOnRect()) {
+                    rectStyle = blueStyle;
+                } else {
+                    rectStyle = redStyle;
+                }
                 break;
             case 5:
                 break;
@@ -220,10 +222,6 @@ function updatePlayerPosition() {
             case 9:
                 break;
         }
-
-    } else if (playerIsAboveGround()) {
-        player.y+= player.fallSpeed;
-    }
     // end player y positioning, start player x-positioning
     playerXRangeValue = playerXRange.value;
     player.x = playerXRangeValue * (middleX/5) + windowOffsetX;
