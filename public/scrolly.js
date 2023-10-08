@@ -12,11 +12,12 @@ $(document).ready(function() {
     const bgWidthSegment = pixBg.width/10;
     var rectX = bgWidthSegment - bgScrollX + middleX;
     const rectY = canvas.height - 30; // Y-coordinate of the top-left corner
-    var rectHeight = 30; 
-    var redStyle = "rgba(255, 0, 0, 0.5)";
-    var greenStyle = "rgba(0, 255, 0, 0.5)"; 
-    var blueStyle = "rgba(0, 0, 255, 0.5)";
-    var whiteStyle = "rgba(255, 255, 255, 0.5)";
+    const rectHeight = 30; 
+    const rectWidth = 2*bgWidthSegment;
+    const redStyle = "rgba(255, 0, 0, 0.5)";
+    const greenStyle = "rgba(0, 255, 0, 0.5)"; 
+    const blueStyle = "rgba(0, 0, 255, 0.5)";
+    const whiteStyle = "rgba(255, 255, 255, 0.5)";
     var rectStyle = redStyle;
     // sprite stuff
     const frameWidth = 64; // Width of a single player frame
@@ -57,7 +58,6 @@ $(document).ready(function() {
       
           if (count >= iterations) {
             clearInterval(intervalId); // Stop the interval when the desired number of iterations is reached
-            console.log('Function completed');
           }
         }, 1);
       }
@@ -84,7 +84,7 @@ $(document).ready(function() {
         height: 64,
         fallSpeed: 2,
         jumpSpeed: 64,
-        walkSpeed: 8,
+        walkSpeed: 6,
         defaultSpeed: 8
     };
 
@@ -141,13 +141,14 @@ document.addEventListener('keyup', (event) => {
 
 
 function playerIsAfterRect() {
-    return player.x > rectX;
+    return player.x > rectX && player.x < rectX+rectWidth;
 }
 function playerIsAboveRect() {
-    return player.y <= rectY - player.height;
+    return (player.y <= rectY - player.height && player.x > rectX && player.x < rectX+rectWidth);
 }
 function playerIsOnRect() {
-    return (player.y <= rectY - player.height + player.fallSpeed && player.y >= rectY - player.height - player.fallSpeed);
+    return (player.y <= rectY - player.height + player.fallSpeed && player.y >= rectY - player.height - player.fallSpeed
+        && player.x > rectX && player.x < rectX+rectWidth);
 }
 
 function playerIsAboveGround() {
@@ -170,10 +171,10 @@ function whichSlideIsPlayerOn() {
 }
 
 function playerIsOnLeftWindowEdge() {
-    return player.x < windowRectX + player.walkSpeed;
+    return player.x < windowRectX;
 }
 function playerIsOnRightWindowEdge() {
-    return player.x > windowRectX + windowRectWidth - player.walkSpeed;
+    return player.x > windowRectX + windowRectWidth - player.width + player.walkSpeed;
 }
   
 // updates player's position RELATIVE TO THE CANVAS
@@ -230,10 +231,9 @@ function updateBGPosition() {
         if (bgScrollX > 0) {
             if (whichSlideIsPlayerOn() === 3) {
                 if(playerIsOnLeftWindowEdge()) {
-                    bgScrollX-= 6;
+                    bgScrollX-= player.walkSpeed;
                 } else {
-                    console.log("slide 33233333");
-                    windowOffsetX -= 6;
+                    windowOffsetX -= player.walkSpeed;
                 }
             } else {
                 bgScrollX-= 6;
@@ -244,10 +244,15 @@ function updateBGPosition() {
         frameRow = 1;
         // if there is still room for the bg to scroll
         if (bgScrollX < pixBg.width-canvas.width) {
-            if (playerIsAfterRect()) {
-                if (playerIsAboveRect() || playerIsOnRect()) {
-                    bgScrollX+= 6;
+            if (whichSlideIsPlayerOn() === 3) {
+                if(playerIsOnRightWindowEdge()) {
+                    bgScrollX+= player.walkSpeed;
+                } else {
+                    windowOffsetX += player.walkSpeed;
                 }
+            }
+            else if (whichSlideIsPlayerOn() === 2 && (playerIsAboveRect() || playerIsOnRect())) {
+                bgScrollX+= 6;
             } 
             else {
                 bgScrollX+= 6;
@@ -285,7 +290,6 @@ function updateBGPosition() {
 
         // draw a rectangle on the canvas
         rectX = bgWidthSegment - bgScrollX + middleX;
-        var rectWidth = canvas.width-rectX; 
         ctx.fillStyle = rectStyle;
         ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
 
