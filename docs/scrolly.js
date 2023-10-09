@@ -27,7 +27,9 @@ $(document).ready(function() {
     const frameCount = 2; // Number of frames in the player spritesheet
     let timeFrame = 0;
     let currentFrame = 0; // The current frame to display (on row)
-    let frameRow = 0;
+    var frameRow = 0;
+    var walkingRow = 1;
+    var idleRow = 0;
     var bgScrollX = 0;
     var bgScrollY = 0;
     let breakPoints = new Set();
@@ -54,6 +56,10 @@ $(document).ready(function() {
     var platformY = middleY + 3/4*rectHeight;
     const platformWidth = bgWidthSegment/10;
     const platformHeight = rectHeight/4;
+    // SLIDE 6 VARIABLES
+    const switchAnimationRowsButton = document.getElementById("switchAnimationRowsButton");
+
+
     const player = {
         x: middleX,
         y: middleY - 64,
@@ -113,15 +119,24 @@ $(document).ready(function() {
 
     }
 
-    // this controls the animation for player from their spritesheet
-    function updatePlayerFrame() {
-        if (timeFrame <= 10) {
-            timeFrame++;
-        } else {
-            currentFrame = (currentFrame + 1) % frameCount;
-            timeFrame = 0;
-        }
+function switchAnimationRows() {
+    frameRow = frameRow===1? 0 : 1;
+    let tempRow = idleRow;
+    idleRow = walkingRow;
+    walkingRow = tempRow;
+}
+switchAnimationRowsButton.addEventListener("click", switchAnimationRows)
+
+
+// this controls the animation for player from their spritesheet
+function updatePlayerFrame() {
+    if (timeFrame <= 10) {
+        timeFrame++;
+    } else {
+        currentFrame = (currentFrame + 1) % frameCount;
+        timeFrame = 0;
     }
+}
 
 // user input for keys
 document.addEventListener('keydown', (event) => {
@@ -130,13 +145,13 @@ document.addEventListener('keydown', (event) => {
         if (player.y > 0) {
             player.y -= player.jumpSpeed;
         }
-        frameRow = 0;
+        frameRow = idleRow;
     }
   });
   
 document.addEventListener('keyup', (event) => {
     keys[event.key] = false;
-    frameRow = 0;
+    frameRow = idleRow;
 });
 
 
@@ -240,7 +255,7 @@ function updatePlayerPosition() {
 // x - moving
 function updateBGPosition() {
     if (keys['a'] || keys['A'] || keys['ArrowLeft']) {
-        frameRow = 1; 
+        frameRow = walkingRow; 
         // if there is still room to scroll
         if (bgScrollX > 0) {
             if (whichSlideIsPlayerOn() === 3) {
@@ -255,7 +270,7 @@ function updateBGPosition() {
         }
     }
     if (keys['d'] || keys['D'] || keys['ArrowRight']) {
-        frameRow = 1;
+        frameRow = walkingRow;
         // if there is still room for the bg to scroll
         if (bgScrollX < pixBg.width-canvas.width) {
             if (whichSlideIsPlayerOn() === 3) {
