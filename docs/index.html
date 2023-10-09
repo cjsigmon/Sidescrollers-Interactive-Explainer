@@ -89,31 +89,58 @@
             <h1><code id="explain-start">[Click or Enter to start]</code></h1>
         </div>
 
-<!-- 
-        <div id="slideshow" class="d-flex justify-content-center align-items-center">
-            <div class="slide visible">
-                <h1 class="text-white px-5 card-header"><code>SLIDE 1</code></h1>
+        <div class="modal" id="refsModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+        
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h5 class="modal-title">Modal Title</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+        
+              <!-- Modal body -->
+              <div class="modal-body">
+                <p>
+                  <ul>
+                    <li><a href="https://www.techopedia.com/definition/27153/side-scroller" target="_blank">Techopedia</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Jump_Bug" target="_blank">Wikipedia</a></li>
+                    <li><a href="https://www.ign.com/articles/2008/03/24/the-leif-ericson-awards?page=2" target="_blank">IGN</a></li>
+                    <li><a href="https://www.hp.com/gb-en/shop/tech-takes/top-50-best-selling-video-games-all-time" target="_blank">HP</a></li>
+                    <li><a href="https://www.gamedeveloper.com/design/scroll-back-the-theory-and-practice-of-cameras-in-side-scrollers" target="_blank">Game Developer</a></li>
+                    <li><a href="https://devskiller.com/blog/history-of-programming-languages/" target="_blank">Devskiller</a></li>
+                    <li><a href="https://www.cartoonbrew.com/videogames/cuphead-sold-500k-copies-first-two-weeks-means-animation-creators-153998.html" target="_blank">Cartoon Brew</a></li>
+                    <li><a href="https://www.nintendo.com/store/products/arcade-archives-pac-land-switch/" target="_blank">Nintendo</a></li>
+                    <li><a href="https://vgsales.fandom.com/wiki/Mario" target="_blank">VG Sales Wiki</a></li>
+                    <li><a href="https://www.theverge.com/2017/9/28/16378364/cuphead-art-design-1930s-animation" target="_blank">The Verge</a></li>
+                  </ul>                  
+                </p>
+                <p>Development Resources</p>
+                <ul>
+                  <li><a href="https://www.pexels.com/@anete-lusina/" target="_blank">Old TV Photos by Anete Lusina</a></li>
+                  <li><a href="https://www.flickr.com/photos/9516941@N08/4323850291" target="_blank">Film Grain on Flickr</a></li>
+                  <li><a href="https://www.pexels.com/photo/grain-texture-5506218/" target="_blank">Grain Texture Photo on Pexels</a></li>
+                  <li><a href="https://www.w3schools.com/js/js_object_sets.asp" target="_blank">JavaScript Object Sets on W3Schools</a></li>
+                  <li><a href="https://www.w3schools.com/graphics/canvas_images.asp" target="_blank">JavaScript Canvas Images on W3Schools</a></li>
+                  <li><a href="https://jsfiddle.net/2ZcSc/3/" target="_blank">Custom Cursor Example on JSFiddle</a></li>
+                  <li><a href="https://www.tutorialrepublic.com/faq/how-to-check-if-the-mouse-is-over-an-element-in-jquery.php" target="_blank">Detect Hover State in jQuery</a></li>
+                  <li><a href="https://custom-cursor.com/en/collection/cursors/interference" target="_blank">Custom Cursors on custom-cursor.com</a></li>
+                </ul>
+                
+              </div>
+        
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+        
             </div>
-            <div class="slide">
-                <h1 class="text-white px-5 card-header"><code>SLIDE 2</code></h1>
-                <p class="lead mx-3">This is some contents about the history of sidescrollers</p>
-            </div>
-            <div class="slide">
-                <h1 class="text-white px-5 card-header"><code>SLIDE 3</code></h1>
-            </div>
-            <div class="slide">
-                <h1 class="text-white px-5 card-header"><code>SLIDE 4</code></h1>
-            </div>
-            <div class="slide">
-                <h1 class="text-white px-5 card-header"><code>SLIDE 5</code></h1>
-            </div>
-            <div class="slide">
-                <h1 class="text-white px-5 card-header"><code>SLIDE 6</code></h1>
-            </div>
-            <div class="slide">
-                <h1 class="text-white px-5 card-header"><code>SLIDE 7</code></h1>
-            </div>
-        </div> -->
+          </div>
+        </div>
+        
+
+        
+
 
           <!-- Slider main container -->
           <div class="swiper mySwiper my-4">
@@ -183,7 +210,10 @@
                   <p class="mx-3">
                     Want to test your retention? OPEN QUIZ
                     <br>
-                    <a href="#">References</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#refsModal">
+                      References
+                    </button>
+                    
                   </p></div>
               </div>
             </div>
@@ -205,6 +235,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.2/paper-full.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="start.js"></script>
     <script src="slides.js"></script>
     <script src="scrolly.js"></script>
