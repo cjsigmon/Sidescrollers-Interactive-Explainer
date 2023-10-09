@@ -3,58 +3,52 @@ $(document).ready(function() {
         counterFormat: 'Question %current of %total',
         questions: [
           {
-            'q': 'A sample question?',
+            'q': 'What is considered the first sidescrolling platformer?',
             'options': [
-              'Answer 1',
-              'Answer 2',
-              'Answer 3',
-              'Answer 4'
+              'Donkey Kong',
+              'Jump Bug',
+              'Super Mario Bros',
+              'Sonic the Hedgehog'
+            ],
+            'correctIndex': 1,
+            'correctResponse': 'Correct!',
+            'incorrectResponse': 'Sorry, that\'s not it!'
+          },
+          {
+            'q': 'When does the \'snap\' of vertical snapping occur?',
+            'options': [
+              'When the player presses jump',
+              'When the player lands on a different elevation',
+              'When the player walks',
+              'Kit-Kat Bar'
+            ],
+            'correctIndex': 2,
+            'correctResponse': 'Correctamundo',
+            'incorrectResponse': 'Nope :('
+          },
+          {
+            'q': 'What language was the original Mario Bros game written in?',
+            'options': [
+              'Assembly 6502',
+              'C',
+              'C++',
+              'Python'
             ],
             'correctIndex': 1,
             'correctResponse': 'Custom correct response.',
             'incorrectResponse': 'Custom incorrect response.'
           },
           {
-            'q': 'What is this image? <img src="https://picsum.photos/100/100">',
+            'q': 'Which of these is not a camera/motion strategy for sidescrolling platformers',
             'options': [
-              'Answer 1',
-              'Answer 2'
+              'Quabity assuance',
+              'Vertical window',
+              'Horizantal locking',
+              'Vertical snapping'
             ],
             'correctIndex': 1,
-            'correctResponse': 'Custom correct response.',
-            'incorrectResponse': 'Custom incorrect response.'
-          },
-          {
-            'q': 'Which image is the correct answer?',
-            'options': [
-              '<img src="https://picsum.photos/100/100">',
-              '<img src="https://picsum.photos/100/100">'
-            ],
-            'correctIndex': 0,
-            'correctResponse': 'Custom correct response.',
-            'incorrectResponse': 'Custom incorrect response.'
-          },
-          {
-            'q': 'A sample question?',
-            'options': [
-              'Answer 1',
-              'Answer 2'
-            ],
-            'correctIndex': 1,
-            'correctResponse': 'Custom correct response.',
-            'incorrectResponse': 'Custom incorrect response.'
-          },
-          {
-            'q': 'A sample question?',
-            'options': [
-              'Answer 1',
-              'Answer 2',
-              'Answer 3',
-              'Answer 4'
-            ],
-            'correctIndex': 3,
-            'correctResponse': 'Custom correct response.',
-            'incorrectResponse': 'Custom incorrect response.'
+            'correctResponse': 'Correct!',
+            'incorrectResponse': 'Not quite.'
           }
         ]
       });
