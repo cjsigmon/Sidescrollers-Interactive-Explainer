@@ -15,6 +15,18 @@ $(document).ready(function() {
             'incorrectResponse': 'Sorry, that\'s not it!'
           },
           {
+            'q': 'What language was the original Mario Bros game written in?',
+            'options': [
+              'C',
+              'C++',
+              'Assembly 6502',
+              'Python'
+            ],
+            'correctIndex': 2,
+            'correctResponse': 'Yepperoni',
+            'incorrectResponse': 'Nope-err-oni'
+          },
+          {
             'q': 'When does the \'snap\' of vertical snapping occur?',
             'options': [
               'When the player presses jump',
@@ -27,26 +39,14 @@ $(document).ready(function() {
             'incorrectResponse': 'Nope :('
           },
           {
-            'q': 'What language was the original Mario Bros game written in?',
-            'options': [
-              'Assembly 6502',
-              'C',
-              'C++',
-              'Python'
-            ],
-            'correctIndex': 0,
-            'correctResponse': 'Custom correct response.',
-            'incorrectResponse': 'Custom incorrect response.'
-          },
-          {
             'q': 'Which of these is not a camera/motion strategy for sidescrolling platformers',
             'options': [
-              'Quabity assuance',
               'Vertical window',
               'Horizantal locking',
-              'Vertical snapping'
+              'Vertical snapping',
+              'Quabity assuance'
             ],
-            'correctIndex': 0,
+            'correctIndex': 3,
             'correctResponse': 'Correct!',
             'incorrectResponse': 'Not quite.'
           }
