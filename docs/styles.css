@@ -293,5 +293,19 @@ mask: var(--mask);
     pointer-events: none;
 }  
 
+@media only screen and (max-width: 600px) {
+    .horizontal {
+        font-size: 13px;
+    }
+    p {
+      font-size: 10px;
+    }
+    code {
+        display: none;
+    }
+    input {
+        display: none;
+    }
+  }
 
 
