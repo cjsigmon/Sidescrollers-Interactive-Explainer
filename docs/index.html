@@ -89,13 +89,41 @@
             <h1><code id="explain-start">[Click or Enter to start]</code></h1>
         </div>
 
+        <div class="modal" id="quizModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+        
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h5 class="modal-title">Quiz</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+        
+              <!-- Modal body -->
+              <div class="modal-body">
+                <p>
+                  Quiz goes here.                 
+                </p>
+
+                
+              </div>
+        
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+        
+            </div>
+          </div>
+        </div>
+
         <div class="modal" id="refsModal">
           <div class="modal-dialog">
             <div class="modal-content">
         
               <!-- Modal Header -->
               <div class="modal-header">
-                <h5 class="modal-title">Modal Title</h5>
+                <h5 class="modal-title">References</h5>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
         
@@ -208,9 +236,11 @@
               <div class="swiper-slide">Slide 9
                 <div class="slide-content mx-4">       
                   <p class="mx-3">
-                    Want to test your retention? OPEN QUIZ
+                    Want to test your retention? <button type="button" class="btn btn-primary mx-3" data-toggle="modal" data-target="#quizModal">
+                      Take Quiz
+                    </button>
                     <br>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#refsModal">
+                    <button type="button" class="btn btn-primary mx-5" data-toggle="modal" data-target="#refsModal">
                       References
                     </button>
                     
