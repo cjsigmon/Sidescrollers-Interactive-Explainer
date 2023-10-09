@@ -53,7 +53,7 @@ $(document).ready(function() {
     // SLIDE 4 VARIABLES
     var platformX;
     var platformY = middleY + 3/4*rectHeight;
-    const platformWidth = bgWidthSegment/10;
+    const platformWidth = bgWidthSegment/6;
     const platformHeight = rectHeight/4;
     // SLIDE 6 VARIABLES
     const switchAnimationRowsButton = document.getElementById("switchAnimationRowsButton");
@@ -332,7 +332,7 @@ function updateBGPosition() {
         ctx.fillRect(rectX, rectY - canvasVerticalOffset, rectWidth, rectHeight);
 
         // draw a platform for slide 4
-        platformX = 3*bgWidthSegment - bgScrollX + 2*middleX;
+        platformX = 3*bgWidthSegment - bgScrollX + 1.5*middleX;
         ctx.fillRect(platformX, platformY - canvasVerticalOffset, platformWidth, platformHeight);
 
 
