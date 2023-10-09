@@ -11,6 +11,7 @@
   "dependencies": {
     "@glidejs/glide": "^3.6.0",
     "@splidejs/splide": "^4.1.4",
+    "quietflow": "^1.0.2",
     "underscore": "^1.13.6"
   },
   "devDependencies": {
