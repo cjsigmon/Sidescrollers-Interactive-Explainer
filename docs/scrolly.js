@@ -7,11 +7,13 @@ $(document).ready(function() {
     const HEIGHT = canvas.height;
     const middleX = WIDTH/2;
     const middleY = canvas.height/2;
+    var canvasVerticalOffset = 0;
     const spriteSheet = document.getElementById("spritesheet");
     const pixBg = document.getElementById("pixBg");
     const bgWidthSegment = pixBg.width/10;
+    // vars for drawing rectangles
     var rectX = bgWidthSegment - bgScrollX + middleX;
-    const rectY = canvas.height - 30; // Y-coordinate of the top-left corner
+    var rectY = canvas.height - 30; // Y-coordinate of the top-left corner
     const rectHeight = 30; 
     const rectWidth = 2*bgWidthSegment;
     const redStyle = "rgba(255, 0, 0, 0.5)";
@@ -19,15 +21,15 @@ $(document).ready(function() {
     const blueStyle = "rgba(0, 0, 255, 0.5)";
     const whiteStyle = "rgba(255, 255, 255, 0.5)";
     var rectStyle = redStyle;
-    // sprite stuff
+    // sprite sheet animation variables
     const frameWidth = 64; // Width of a single player frame
     const frameHeight = 64; // Height of player frame
     const frameCount = 2; // Number of frames in the player spritesheet
-    // sprite sheet animation variables
     let timeFrame = 0;
     let currentFrame = 0; // The current frame to display (on row)
     let frameRow = 0;
     var bgScrollX = 0;
+    var bgScrollY = 0;
     let breakPoints = new Set();
     // keys for user input
     const keys = {};
@@ -49,7 +51,7 @@ $(document).ready(function() {
     var windowOffsetX = 0;
     // SLIDE 4 VARIABLES
     var platformX;
-    const platformY = middleY + 3/4*rectHeight;
+    var platformY = middleY + 3/4*rectHeight;
     const platformWidth = bgWidthSegment/10;
     const platformHeight = rectHeight/4;
     const player = {
@@ -156,8 +158,9 @@ function playerIsOnRect() {
 }
 
 function playerIsAboveGround() {
-    return player.y <= HEIGHT - player.height;
+    return player.y <= HEIGHT - player.height - player.fallSpeed;
 }
+
 
 function whichSlideIsPlayerOn() {
     if (player.x < rectX) {
@@ -207,7 +210,11 @@ function updatePlayerPosition() {
             case 4:
                 if (playerIsOnRect()) {
                     rectStyle = blueStyle;
+                    canvasVerticalOffset = platformY-canvas.height+ctx.lineWidth;
                 } else {
+                    if (!playerIsAboveGround()) {
+                        canvasVerticalOffset = 0;
+                    }
                     rectStyle = redStyle;
                 }
                 break;
@@ -276,7 +283,7 @@ function updateBGPosition() {
 } // end function updatePlayerPosition()
 
     function playFrames() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         updatePlayerFrame();
         updateBGPosition();
         updatePlayerPosition();
@@ -286,7 +293,7 @@ function updateBGPosition() {
         ctx.drawImage(
             pixBg,
             bgScrollX,
-            0,
+            bgScrollY + canvasVerticalOffset,
             1200,
             160,
             0,
@@ -298,11 +305,11 @@ function updateBGPosition() {
         // draw a rectangle for slide 2,3
         rectX = bgWidthSegment - bgScrollX + middleX;
         ctx.fillStyle = rectStyle;
-        ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
+        ctx.fillRect(rectX, rectY - canvasVerticalOffset, rectWidth, rectHeight);
 
         // draw a platform for slide 4
         platformX = 3*bgWidthSegment - bgScrollX + 2*middleX;
-        ctx.fillRect(platformX, platformY, platformWidth, platformHeight);
+        ctx.fillRect(platformX, platformY - canvasVerticalOffset, platformWidth, platformHeight);
 
 
         //  draw the player
@@ -313,7 +320,7 @@ function updateBGPosition() {
             frameWidth,
             frameHeight,
             player.x,
-            player.y,
+            player.y - canvasVerticalOffset,
             player.width,
             player.height
         );
