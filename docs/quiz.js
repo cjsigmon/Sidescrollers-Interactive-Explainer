@@ -22,7 +22,7 @@ $(document).ready(function() {
               'When the player walks',
               'Kit-Kat Bar'
             ],
-            'correctIndex': 2,
+            'correctIndex': 1,
             'correctResponse': 'Correctamundo',
             'incorrectResponse': 'Nope :('
           },
@@ -34,7 +34,7 @@ $(document).ready(function() {
               'C++',
               'Python'
             ],
-            'correctIndex': 1,
+            'correctIndex': 0,
             'correctResponse': 'Custom correct response.',
             'incorrectResponse': 'Custom incorrect response.'
           },
@@ -46,7 +46,7 @@ $(document).ready(function() {
               'Horizantal locking',
               'Vertical snapping'
             ],
-            'correctIndex': 1,
+            'correctIndex': 0,
             'correctResponse': 'Correct!',
             'incorrectResponse': 'Not quite.'
           }
