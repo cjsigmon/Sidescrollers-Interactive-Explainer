@@ -9,7 +9,8 @@ $(document).ready(function() {
 
 
     $(document).on('mousemove', function(e){
-        if($('#start-btn:hover').length != 0 || $('.cursor-none:hover').length != 0) {
+        if($('#start-btn:hover').length != 0 || $('.cursor-none:hover').length != 0 
+        || $('.answers:hover').length != 0 || $('a:hover').length != 0) {
             $('#custom-cursor').css({
                 left:  e.pageX,
                 top:   e.pageY,

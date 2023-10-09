@@ -16,6 +16,13 @@ body {
     cursor: none !important;
 }
 
+.answers>li>a {
+    cursor: none !important;
+}
+.quiz-next-btn {
+    cursor: none !important;
+
+}
 
 
 #start-screen {

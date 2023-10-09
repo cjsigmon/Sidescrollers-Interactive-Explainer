@@ -41,7 +41,6 @@ $(document).ready(function() {
     // SLIDE 2 VARIABLES
     var playerXRange = document.getElementById("playerXRange");
     var playerXRangeValue =  5;
-    var playerXOutput = document.getElementById("playerXOutput");
     // SLIDE 3 VARIABLES
     ctx.lineWidth = 10;
     ctx.strokeStyle = whiteStyle;
@@ -258,7 +257,6 @@ function updatePlayerPosition() {
     // end player y positioning, start player x-positioning
     playerXRangeValue = playerXRange.value;
     player.x = playerXRangeValue * (middleX/5) + windowOffsetX;
-    playerXOutput.innerHTML = playerXRangeValue;
 
 
 }
