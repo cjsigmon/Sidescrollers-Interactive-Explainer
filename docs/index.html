@@ -13,7 +13,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
     <link href="styles.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="splitchar.css">
 
 
     <!-- vg font code -->
@@ -331,7 +330,24 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.2/paper-full.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="splitchar.js"></script>
+    <script>
+            /**
+       * Splitchar.js
+       * @author emisfera - Razvan B.
+       */
+
+      $.fn.splitchar = function () {   
+        $('.splitchar').each(function (index) {
+          var $main = $(this);
+          var characters = $main.text().split('');
+          $main.empty();
+          $.each(characters, function (i, el) {
+            var type = $main.attr('class');
+            $main.append("<span class='" + type + "' data-content='" + el + "'>" + el + "</span>");
+          });
+        });
+      };
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 

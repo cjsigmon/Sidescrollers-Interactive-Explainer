@@ -170,4 +170,128 @@ mask: var(--mask);
 
 
 
+/* splitchar styles */
+.horizontal {
+    position:relative;
+    display:inline-block;
+    overflow:hidden;
+    white-space: pre;
+    color:transparent;
+    font-family: "loos-extended", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+.horizontal:before {
+    display:block;
+    z-index:1;
+    position:absolute;
+    top:0;
+    width: 70%;
+    content: attr(data-content); 
+    overflow:hidden;
+    pointer-events: none; 
+    color: rgb(255, 255, 255);
+}
+.horizontal:after {
+    display:block;
+    direction: rtl;
+    position:absolute;
+    z-index:2;
+    top:0;
+    left:70%;
+    width: 30%;
+    content: attr(data-content);
+    overflow:hidden;
+    pointer-events: none;
+    color:  rgb(189, 189, 189);
+}
+.horizontal-tri {
+    position:relative;
+    display:inline-block;
+    overflow:hidden;
+    white-space: pre;
+}
+.horizontal-tri:before {
+    display:block;
+    z-index:1;
+    position:absolute;
+    top:0;
+    width: 33%;
+    content: attr(data-content); 
+    overflow:hidden;
+    pointer-events: none; 
+}
+.horizontal-tri:after {
+    display:block;
+    direction: rtl;
+    position:absolute;
+    z-index:2;
+    top:0;
+    left:68%;
+    width: 33%;
+    content: attr(data-content);
+    overflow:hidden;
+    pointer-events: none;
+}
+.vertical {
+    position:relative;
+    display:inline-block;
+    overflow:hidden;
+    white-space: pre;
+    color: transparent;
+}
+.vertical:before {
+    display:block;
+    z-index:2;
+    position:absolute;
+    top:0;
+    height: 50%;
+    content: attr(data-content); 
+    overflow:hidden;
+    pointer-events: none; 
+    color: #ecf0f1;
+}
+.vertical:after {
+    display:block;
+    direction: rtl;
+    position:absolute;
+    z-index:1;
+    top:0;
+    height:100%;
+    left:0;
+    content: attr(data-content);
+    overflow:hidden;
+    pointer-events: none;
+    color: #bdc3c7;
+}  
+.vertical-tri {
+    position:relative;
+    display:inline-block;
+    overflow:hidden;
+    white-space: pre;
+}
+.vertical-tri:before {
+    display:block;
+    z-index:2;
+    position:absolute;
+    top:0;
+    height: 33%;
+    content: attr(data-content); 
+    overflow:hidden;
+    pointer-events: none; 
+}
+.vertical-tri:after {
+    display:block;
+    direction: rtl;
+    position:absolute;
+    z-index:1;
+    top:0;
+    height:66%;
+    left:0;
+    content: attr(data-content);
+    overflow:hidden;
+    pointer-events: none;
+}  
+
+
 
