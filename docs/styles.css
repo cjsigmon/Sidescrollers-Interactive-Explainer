@@ -26,7 +26,7 @@ body {
 
 
 #start-screen {
-    background-image: linear-gradient(to bottom, rgb(50, 43, 0), rgb(0, 0, 0));
+    /* background-image: linear-gradient(to bottom, rgb(50, 43, 0), rgb(0, 0, 0)); */
     position: absolute;
     width: 98%;
     height: 98%;

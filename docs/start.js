@@ -1,5 +1,15 @@
 
 $(document).ready(function() {
+  $("#start-screen").quietflow({
+    theme : "squareFlash",
+    squareSize : 20,
+    maxRed : 255,
+    maxGreen : 40,
+    maxBlue : 100,
+    speed : 80
+  })
+
+
     $('#START').css({
         display: "block"       
     });
