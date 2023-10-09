@@ -58,6 +58,9 @@ $(document).ready(function() {
     const platformHeight = rectHeight/4;
     // SLIDE 6 VARIABLES
     const switchAnimationRowsButton = document.getElementById("switchAnimationRowsButton");
+    // SLIDE 7 VARIABLES
+    var FPS = 10;
+    const frameBufferRange = document.getElementById("frameBufferRange");
 
 
     const player = {
@@ -125,12 +128,20 @@ function switchAnimationRows() {
     idleRow = walkingRow;
     walkingRow = tempRow;
 }
-switchAnimationRowsButton.addEventListener("click", switchAnimationRows)
+switchAnimationRowsButton.addEventListener("click", switchAnimationRows);
+
+frameBufferRange.oninput = function() {
+    if (this.value > 2) {
+        FPS = 30-this.value;
+    } else {
+        FPS = 120- 30*this.value;
+    }
+}
 
 
 // this controls the animation for player from their spritesheet
 function updatePlayerFrame() {
-    if (timeFrame <= 10) {
+    if (timeFrame <= FPS) {
         timeFrame++;
     } else {
         currentFrame = (currentFrame + 1) % frameCount;
